@@ -1,0 +1,7 @@
+.bistro {
+  background: linear-gradient(rgba(0, 0, 0, 0.387), rgba(0, 0, 0, 0.313)),
+    url("../../../../assets/home/chef-service.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
