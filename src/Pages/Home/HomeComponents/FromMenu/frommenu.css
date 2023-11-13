@@ -1,0 +1,7 @@
+.frommenu {
+  background: linear-gradient(rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0.701)),
+    url("../../../../assets/home/featured.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
