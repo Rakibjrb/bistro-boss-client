@@ -4,11 +4,11 @@ import Nav from "./Layout/Nav/Nav";
 
 function App() {
   return (
-    <>
+    <div data-theme="light">
       <Nav />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }
 

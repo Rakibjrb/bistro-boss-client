@@ -1,6 +1,7 @@
 import Banner from "./HomeComponents/Banner/Banner";
 import BistroBoss from "./HomeComponents/BistroBoss/BistroBoss";
 import CallUs from "./HomeComponents/CallUs/CallUs";
+import ChefRecomend from "./HomeComponents/ChefRecomend/ChefRecomend";
 import OrderOnline from "./HomeComponents/OrderOnline/OrderOnline";
 import OurMenus from "./HomeComponents/OurMenus/OurMenus";
 
@@ -13,6 +14,7 @@ const Home = () => {
         <BistroBoss />
         <OurMenus />
         <CallUs />
+        <ChefRecomend />
       </div>
     </>
   );
