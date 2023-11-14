@@ -21,29 +21,29 @@ const OurMenu = () => {
         <title>Bistro Boss | Menu</title>
       </Helmet>
       <PageHeader img={OurMenuImg} title={"OUR MENU"} />
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <SectionHeader toptitle={"---Don't miss---"} title={"TODAY'S OFFER"} />
-        <MenuSection loading={loading} items={offered} />
+        <MenuSection loading={loading} items={offered} category={"offered"} />
       </div>
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <PageHeader img={DessertImg} title={"Dessert"} />
-        <MenuSection loading={loading} items={dessert} />
+        <MenuSection loading={loading} items={dessert} category={"dessert"} />
       </div>
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <PageHeader img={DessertImg} title={"Pizza"} />
-        <MenuSection loading={loading} items={pizza} />
+        <MenuSection loading={loading} items={pizza} category={"pizza"} />
       </div>
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <PageHeader img={DessertImg} title={"Salads"} />
-        <MenuSection loading={loading} items={salad} />
+        <MenuSection loading={loading} items={salad} category={"salad"} />
       </div>
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <PageHeader img={DessertImg} title={"Soups"} />
-        <MenuSection loading={loading} items={soup} />
+        <MenuSection loading={loading} items={soup} category={"soup"} />
       </div>
-      <div className="max-w-7xl mx-auto mb-16">
+      <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <PageHeader img={DessertImg} title={"Drinks"} />
-        <MenuSection loading={loading} items={drinks} />
+        <MenuSection loading={loading} items={drinks} category={"drink"} />
       </div>
     </div>
   );

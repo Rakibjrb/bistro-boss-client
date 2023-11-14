@@ -1,6 +1,6 @@
 import SectionHeader from "../../../../Components/CommonHeader/SectionHeader";
+import ItemsCard from "../../../../Components/ItemsCard.jsx/ItemsCard";
 import useMenu from "../../../../Hooks/useMenu";
-import ItemsCard from "./ItemsCard";
 
 const ChefRecomend = () => {
   const [menus, loading] = useMenu();
