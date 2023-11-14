@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import SectionHeader from "../../../../Components/CommonHeader/SectionHeader";
+import useMenu from "../../../../Hooks/useMenu";
 import ItemsCard from "./ItemsCard";
 
 const ChefRecomend = () => {
-  const [loading, setLoading] = useState(true);
-  const [offeredMenu, setOfferedMenu] = useState([]);
-
-  useEffect(() => {
-    axios.get("./menu.json").then((res) => {
-      const filtered = res.data?.filter((item) => item.category === "offered");
-      setOfferedMenu(filtered);
-      setLoading(false);
-    });
-  }, []);
+  const [menus, loading] = useMenu();
+  const offeredMenu = menus?.filter((item) => item.category === "offered");
 
   return (
     <div className="mb-32 px-3 xl:px-0">

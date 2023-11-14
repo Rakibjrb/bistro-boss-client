@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Menu = ({ menu }) => {
+const MenuItems = ({ menu }) => {
   const { name, image, recipe, price } = menu;
   return (
     <div className="flex space-x-2">
@@ -19,7 +19,7 @@ const Menu = ({ menu }) => {
   );
 };
 
-Menu.propTypes = {
+MenuItems.propTypes = {
   menu: PropTypes.object,
 };
-export default Menu;
+export default MenuItems;

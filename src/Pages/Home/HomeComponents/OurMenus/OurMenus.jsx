@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import SectionHeader from "../../../../Components/CommonHeader/SectionHeader";
-import Menu from "./Menu";
+import MenuItems from "../../../../Components/MenuItems/MenuItems";
+import useMenu from "../../../../Hooks/useMenu";
 
 const OurMenus = () => {
-  const [loading, setLoading] = useState(true);
-  const [menus, setMenus] = useState([]);
-
-  useEffect(() => {
-    axios.get("./menu.json").then((res) => {
-      const popular = res.data?.filter((item) => item.category === "popular");
-      setMenus(popular);
-      setLoading(false);
-    });
-  }, []);
+  const [menus, loading] = useMenu();
+  const popular = menus?.filter((item) => item.category === "popular");
 
   return (
     <div className="mb-32 px-3 xl:px-0">
@@ -22,8 +15,8 @@ const OurMenus = () => {
         "loading data ..."
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-2 mt-8">
-          {menus?.map((menu) => (
-            <Menu key={menu._id} menu={menu} />
+          {popular?.map((menu) => (
+            <MenuItems key={menu._id} menu={menu} />
           ))}
         </div>
       )}
