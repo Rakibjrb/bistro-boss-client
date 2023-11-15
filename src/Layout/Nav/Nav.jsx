@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./nav.css";
 import { useEffect, useState } from "react";
 
@@ -35,6 +35,31 @@ const Nav = () => {
     </>
   );
 
+  const loginLinks = (
+    <>
+      <li>
+        <Link to="/user-login">Login Now</Link>
+      </li>
+    </>
+  );
+
+  const loggedLinks = (
+    <>
+      <li>
+        <a className="justify-between">
+          User Name
+          <span className="badge">New</span>
+        </a>
+      </li>
+      <li>
+        <a>Dashboard</a>
+      </li>
+      <li>
+        <a>Logout</a>
+      </li>
+    </>
+  );
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 200) {
@@ -44,6 +69,8 @@ const Nav = () => {
       }
     });
   }, []);
+
+  const user = false;
 
   return (
     <div
@@ -95,18 +122,7 @@ const Nav = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
               >
-                <li>
-                  <a className="justify-between">
-                    User Name
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Dashboard</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
+                {user ? loggedLinks : loginLinks}
               </ul>
             </div>
           </div>
@@ -126,18 +142,7 @@ const Nav = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
               >
-                <li>
-                  <a className="justify-between">
-                    User Name
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Dashboard</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
+                {user ? loggedLinks : loginLinks}
               </ul>
             </div>
           </div>
