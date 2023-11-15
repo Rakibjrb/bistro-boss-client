@@ -1,9 +1,20 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./nav.css";
 import { useEffect, useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Nav = () => {
   const [sticky, setSticky] = useState(false);
+  const { user, userLogout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    userLogout().then(() => {
+      toast.success("Logout Success ...");
+      navigate("/");
+    });
+  };
 
   const navlinks = (
     <>
@@ -41,16 +52,13 @@ const Nav = () => {
   const loggedLinks = (
     <>
       <li>
-        <a className="justify-between">
-          User Name
-          <span className="badge">New</span>
-        </a>
+        <a>{user && user.displayName}</a>
       </li>
       <li>
         <a>Dashboard</a>
       </li>
       <li>
-        <a>Logout</a>
+        <button onClick={handleLogOut}>Logout</button>
       </li>
     </>
   );
@@ -64,8 +72,6 @@ const Nav = () => {
       }
     });
   }, []);
-
-  const user = false;
 
   return (
     <div

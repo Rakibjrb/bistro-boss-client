@@ -25,7 +25,7 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     const retypePassword = form.rtpassword.value;
-    if (password.length < 7 || retypePassword.length < 7) {
+    if (password.length < 7 && retypePassword.length < 7) {
       toast.error("Password must have at least 8 characters !!!");
       clearPasswordField(form);
       return;
@@ -105,7 +105,11 @@ const Signup = () => {
             required
           />
           <button className="btn bg-red-500 text-white hover:text-black w-full">
-            {loading ? <ImSpinner3 className="animate-spin" /> : "Sign Up Now"}
+            {loading ? (
+              <ImSpinner3 className="animate-spin text-xl" />
+            ) : (
+              "Sign Up Now"
+            )}
           </button>
           <div className="my-2 flex text-white justify-between">
             <p className="font-semibold">Already have an accound?</p>
