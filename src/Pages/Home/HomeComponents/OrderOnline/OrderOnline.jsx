@@ -20,7 +20,7 @@ const OrderOnline = () => {
       <div className="mt-10">
         <Swiper
           slidesPerView={4}
-          spaceBetween={0}
+          spaceBetween={5}
           pagination={{
             clickable: true,
           }}
