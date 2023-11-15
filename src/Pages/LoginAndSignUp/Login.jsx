@@ -52,10 +52,17 @@ const Login = () => {
       return;
     }
 
-    userLogin(email, password).then(() => {
-      toast.success("User login successfull ...");
-      location?.from?.state ? navigate(location?.from?.state) : navigate("/");
-    });
+    userLogin(email, password)
+      .then(() => {
+        toast.success("User login successfull ...");
+        location?.from?.state ? navigate(location?.from?.state) : navigate("/");
+      })
+      .catch((e) => {
+        if (e) toast.error("Please provide valid info !!!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      });
   };
 
   useEffect(() => {
