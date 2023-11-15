@@ -53,7 +53,7 @@ const Nav = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="navbar min-h-[80px]">
-          <div className="navbar-start">
+          <div className="navbar-start w-full justify-between lg:justify-normal lg:w-auto">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
@@ -81,9 +81,65 @@ const Nav = () => {
             <a className="btn btn-ghost normal-case text-xl text-white">
               Bistro BOSS
             </a>
+            {/* mobile user dropdown */}
+            <div className="dropdown dropdown-end lg:hidden">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://i.ibb.co/5x441PC/user.png"
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
+              >
+                <li>
+                  <a className="justify-between">
+                    User Name
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Dashboard</a>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="navbar-end lg:w-full xl:w-1/2 hidden lg:flex lg:text-white">
+          <div className="navbar-end lg:w-full hidden lg:flex lg:text-white">
             <ul className="space-x-8 menu-horizontal px-1">{navlinks}</ul>
+            {/* desktop user dropdown */}
+            <div className="dropdown dropdown-end ml-4">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://i.ibb.co/5x441PC/user.png"
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
+              >
+                <li>
+                  <a className="justify-between">
+                    User Name
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Dashboard</a>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

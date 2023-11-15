@@ -1,5 +1,7 @@
-.thumbs {
-  height: 70px;
-  display: flex;
-  justify-content: center;
+@media screen and (min-width: 1188px) {
+  .thumbs {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+  }
 }
