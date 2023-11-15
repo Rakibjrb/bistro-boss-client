@@ -12,7 +12,7 @@ import SlideImage5 from "../../../../assets/home/slide5.jpg";
 
 const OrderOnline = () => {
   return (
-    <div className="my-32">
+    <div className="mt-16 lg:mt-32 mb-32">
       <SectionHeader
         toptitle="---From 11:00am to 10:00pm---"
         title="ORDER ONLINE"

@@ -55,7 +55,7 @@ const Nav = () => {
         <a>{user && user.displayName}</a>
       </li>
       <li>
-        <a>Dashboard</a>
+        <Link to="/user-dashboard">Dashboard</Link>
       </li>
       <li>
         <button onClick={handleLogOut}>Logout</button>
@@ -76,8 +76,8 @@ const Nav = () => {
   return (
     <div
       className={`bg-black ${
-        sticky ? "sticky" : "absolute"
-      } top-0 left-0 z-[100] w-full bg-opacity-40 transition-all duration-700`}
+        sticky ? "sticky bg-opacity-40" : "absolute lg:bg-opacity-50"
+      } top-0 left-0 z-[100] w-full transition-all duration-700`}
     >
       <div className="max-w-7xl mx-auto">
         <div className="navbar min-h-[80px]">

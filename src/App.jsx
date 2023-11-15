@@ -8,7 +8,9 @@ function App() {
     <div data-theme="light">
       <Toaster position="top-center" reverseOrder={false} />
       <Nav />
-      <Outlet />
+      <div className="mt-[80px] lg:mt-0">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

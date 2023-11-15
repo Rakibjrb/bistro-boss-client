@@ -1,7 +1,11 @@
-@media screen and (min-width: 1188px) {
+@media screen and (min-width: 767px) {
   .thumbs {
-    height: 70px;
     display: flex;
     justify-content: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .thumbs {
+    height: 70px;
   }
 }

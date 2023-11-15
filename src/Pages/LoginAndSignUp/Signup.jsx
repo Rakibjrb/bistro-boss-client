@@ -56,8 +56,8 @@ const Signup = () => {
         form.reset();
         updateUserProifle(name)
           .then(() => {
-            location?.from?.state
-              ? navigate(location?.from?.state)
+            location?.state?.from
+              ? navigate(location?.state?.from)
               : navigate("/");
           })
           .catch((e) => console.log(e));

@@ -19,6 +19,8 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  console.log(location.state.from);
+
   const validateCaptchaFunc = () => {
     const user_captcha_value = captchaRef.current.value;
     if (validateCaptcha(user_captcha_value)) {
@@ -55,7 +57,7 @@ const Login = () => {
     userLogin(email, password)
       .then(() => {
         toast.success("User login successfull ...");
-        location?.from?.state ? navigate(location?.from?.state) : navigate("/");
+        location?.state?.from ? navigate(location?.state?.from) : navigate("/");
       })
       .catch((e) => {
         if (e) toast.error("Please provide valid info !!!");

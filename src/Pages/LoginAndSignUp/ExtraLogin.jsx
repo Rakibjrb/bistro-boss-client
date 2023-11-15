@@ -12,7 +12,7 @@ const ExtraLogin = () => {
     googleSignIn()
       .then(() => {
         toast.success("Google Sign In Success ...");
-        location?.from?.state ? navigate(location?.from?.state) : navigate("/");
+        location?.state?.from ? navigate(location?.state?.from) : navigate("/");
       })
       .catch((e) => {
         console.log(e);
