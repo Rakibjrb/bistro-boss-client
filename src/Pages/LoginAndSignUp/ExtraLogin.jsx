@@ -1,14 +1,18 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ExtraLogin = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const { googleSignIn } = useAuth();
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(() => {
-        console.log("google login success");
         toast.success("Google Sign In Success ...");
+        location?.from?.state ? navigate(location?.from?.state) : navigate("/");
       })
       .catch((e) => {
         console.log(e);

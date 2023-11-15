@@ -34,7 +34,10 @@ const AuthProvider = ({ children }) => {
     photo = "https://i.ibb.co/5x441PC/user.png"
   ) => {
     setLoading(true);
-    return updateProfile(user, { displayName: name, photoURL: photo });
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
   const userLogin = (email, password) => {

@@ -18,11 +18,6 @@ const Nav = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard" className=" uppercase">
-          Dashboard
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/our-menu" className="uppercase">
           Our Menu
         </NavLink>

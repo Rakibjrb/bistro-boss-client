@@ -5,7 +5,7 @@ import "./loginSignUp.css";
 
 const Login = () => {
   return (
-    <div className="w-full h-[760px] flex justify-center items-center mt-[88px] px-4 md:px-0">
+    <div className="w-full h-[760px] flex justify-center items-center mt-[80px] px-4 md:px-0 bg-[#000000d3]">
       <form className="bg-[#00000089] border-2 border-white form-control p-10 w-[500px] rounded-lg">
         <h2 className="text-white text-3xl text-center mb-5">User Login</h2>
         <div className="w-full space-y-5">
