@@ -1,4 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { HiShoppingCart } from "react-icons/hi";
 import "./nav.css";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
@@ -37,6 +38,14 @@ const Nav = () => {
         <NavLink to="/our-shop/salad" className="uppercase">
           Our Shop
         </NavLink>
+      </li>
+      <li>
+        <Link className="relative" to="/cart">
+          <HiShoppingCart className="text-2xl" />
+          <h4 className="badge badge-secondary absolute lg:-top-4 lg:-right-7">
+            +99
+          </h4>
+        </Link>
       </li>
     </>
   );
