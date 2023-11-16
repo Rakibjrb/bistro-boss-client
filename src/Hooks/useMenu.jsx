@@ -1,12 +1,14 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxios from "./useAxios";
 
 const useMenu = () => {
   const [menus, setMenus] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const axios = useAxios();
+
   useEffect(() => {
-    axios.get("./menu.json").then((res) => {
+    axios.get("/menus/all").then((res) => {
       setMenus(res.data);
       setLoading(false);
     });
@@ -14,5 +16,4 @@ const useMenu = () => {
 
   return [menus, loading];
 };
-
 export default useMenu;

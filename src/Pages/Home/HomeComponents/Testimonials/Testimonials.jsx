@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import { Rating } from "@smastrom/react-rating";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation } from "swiper/modules";
+// import { Rating } from "@smastrom/react-rating";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@smastrom/react-rating/style.css";
 import SectionHeader from "../../../../Components/CommonHeader/SectionHeader";
-import axios from "axios";
 
 const Testimonials = () => {
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    axios.get("./reviews.json").then((res) => setReviews(res.data));
-  }, []);
-
   return (
     <section className="my-20">
       <SectionHeader
@@ -22,8 +14,8 @@ const Testimonials = () => {
         title="Testimonials"
       />
 
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        {reviews.map((review) => (
+      {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        {reviews?.map((review) => (
           <SwiperSlide key={review._id}>
             <div className="flex flex-col items-center mx-24 my-16">
               <Rating
@@ -36,7 +28,7 @@ const Testimonials = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </section>
   );
 };

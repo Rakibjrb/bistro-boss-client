@@ -6,11 +6,12 @@ import ItemsCard from "../../Components/ItemsCard.jsx/ItemsCard";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxios from "../../Hooks/useAxios";
 
 const OurShop = () => {
   const [menus, setMenus] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axios = useAxios();
   const categories = ["offered", "salad", "pizza", "dessert", "soup", "drink"];
   const { category } = useParams();
   const defaultIndex = categories.indexOf(category);
@@ -22,7 +23,7 @@ const OurShop = () => {
   const offered = menus?.filter((menu) => menu.category === "offered");
 
   useEffect(() => {
-    axios.get(`../menu.json`).then((res) => {
+    axios.get(`/menus/all`).then((res) => {
       setMenus(res.data);
       setLoading(false);
     });
