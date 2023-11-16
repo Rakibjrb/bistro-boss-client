@@ -42,7 +42,7 @@ const Nav = () => {
         </NavLink>
       </li>
       <li>
-        <Link className="relative" to="/cart">
+        <Link className="relative" to="/user-dashboard/cart">
           <HiShoppingCart className="text-2xl" />
           <h4 className="badge badge-secondary absolute lg:-top-4 lg:-right-7">
             {cartItems?.length || 0}
@@ -66,7 +66,7 @@ const Nav = () => {
         <a>{user && user.displayName}</a>
       </li>
       <li>
-        <Link to="/user-dashboard">Dashboard</Link>
+        <Link to="/user-dashboard/profile">Dashboard</Link>
       </li>
       <li>
         <button onClick={handleLogOut}>Logout</button>
