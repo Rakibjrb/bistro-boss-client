@@ -19,8 +19,6 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location.state.from);
-
   const validateCaptchaFunc = () => {
     const user_captcha_value = captchaRef.current.value;
     if (validateCaptcha(user_captcha_value)) {
