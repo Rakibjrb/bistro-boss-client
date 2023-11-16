@@ -3,7 +3,7 @@ import useCart from "../../../Hooks/useCart";
 import CartItems from "./CartItems";
 
 const UserCart = () => {
-  const [cartItems, , isPending] = useCart();
+  const [cartItems, refetch, isPending] = useCart();
   const totalPrice = cartItems?.reduce(
     (sum, currentvalue) => sum + currentvalue.price,
     0
@@ -40,7 +40,12 @@ const UserCart = () => {
                   </thead>
                   <tbody>
                     {cartItems?.map((item, index) => (
-                      <CartItems key={item._id} item={item} index={index} />
+                      <CartItems
+                        key={item._id}
+                        item={item}
+                        index={index}
+                        refetch={refetch}
+                      />
                     ))}
                   </tbody>
                 </table>

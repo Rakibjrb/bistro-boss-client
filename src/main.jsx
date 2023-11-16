@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import "./index.css";
 import routes from "./Routes/Routes.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           </RouterProvider>
         </AuthProvider>
       </QueryClientProvider>
+      <Toaster position="top-center" reverseOrder={false} />
     </HelmetProvider>
   </React.StrictMode>
 );
