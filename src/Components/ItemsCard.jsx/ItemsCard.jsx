@@ -3,12 +3,14 @@ import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import toast from "react-hot-toast";
+import useCart from "../../Hooks/useCart";
 
 const ItemsCard = ({ menu }) => {
   const { user } = useAuth();
   const axios = useAxios();
   const { _id, name, image, recipe, price } = menu;
   const navigate = useNavigate();
+  const [, refetch] = useCart();
 
   const handleAddToCart = () => {
     if (!user) {
@@ -29,6 +31,7 @@ const ItemsCard = ({ menu }) => {
       .post("/cart", dataAddToCart)
       .then(() => {
         toast.success("Item Added to your cart ...");
+        refetch();
       })
       .catch((e) => {
         console.log(e);
