@@ -1,12 +1,23 @@
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation } from "swiper/modules";
-// import { Rating } from "@smastrom/react-rating";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { Rating } from "@smastrom/react-rating";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@smastrom/react-rating/style.css";
 import SectionHeader from "../../../../Components/CommonHeader/SectionHeader";
+import useAxios from "../../../../Hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 const Testimonials = () => {
+  const axios = useAxios();
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["getReviews"],
+    queryFn: async () => {
+      const res = await axios.get("/reviews");
+      return res.data;
+    },
+  });
+
   return (
     <section className="my-20">
       <SectionHeader
@@ -14,7 +25,7 @@ const Testimonials = () => {
         title="Testimonials"
       />
 
-      {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews?.map((review) => (
           <SwiperSlide key={review._id}>
             <div className="flex flex-col items-center mx-24 my-16">
@@ -28,7 +39,7 @@ const Testimonials = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper> */}
+      </Swiper>
     </section>
   );
 };

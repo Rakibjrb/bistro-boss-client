@@ -4,11 +4,13 @@ import "./nav.css";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useCart from "../../Hooks/useCart";
 
 const Nav = () => {
   const [sticky, setSticky] = useState(false);
   const { user, userLogout } = useAuth();
   const navigate = useNavigate();
+  const [cartItems] = useCart();
 
   const handleLogOut = () => {
     userLogout().then(() => {
@@ -43,7 +45,7 @@ const Nav = () => {
         <Link className="relative" to="/cart">
           <HiShoppingCart className="text-2xl" />
           <h4 className="badge badge-secondary absolute lg:-top-4 lg:-right-7">
-            {0}
+            {cartItems?.length || 0}
           </h4>
         </Link>
       </li>
