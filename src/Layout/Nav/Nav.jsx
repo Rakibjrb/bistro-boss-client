@@ -43,7 +43,7 @@ const Nav = () => {
         <Link className="relative" to="/cart">
           <HiShoppingCart className="text-2xl" />
           <h4 className="badge badge-secondary absolute lg:-top-4 lg:-right-7">
-            +99
+            {0}
           </h4>
         </Link>
       </li>
