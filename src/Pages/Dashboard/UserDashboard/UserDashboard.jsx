@@ -1,7 +1,9 @@
+import SectionHeader from "../../../Components/CommonHeader/SectionHeader";
+
 const UserDashboard = () => {
   return (
     <div className="pt-2">
-      <h2 className="text-4xl font-bold text-center">User Profile</h2>
+      <SectionHeader toptitle={"--Dashboard--"} title={"User Profile"} />
     </div>
   );
 };
