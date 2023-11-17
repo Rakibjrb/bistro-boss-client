@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div className="max-w-7xl mx-auto px-3 xl:px-0">
+    <div className="min-w-[768px] overflow-auto px-3 xl:px-0">
       <div>
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -12,9 +12,22 @@ const Dashboard = () => {
             </div>
             <label
               htmlFor="my-drawer-2"
-              className="btn btn-primary drawer-button lg:hidden"
+              className="btn btn-neutral drawer-button lg:hidden absolute top-0 left-0"
             >
-              Open drawer
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </label>
           </div>
           <div className="drawer-side">

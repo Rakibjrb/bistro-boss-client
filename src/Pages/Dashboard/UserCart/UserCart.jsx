@@ -10,7 +10,7 @@ const UserCart = () => {
   );
 
   return (
-    <div className="pl-2">
+    <div className="px-2">
       <SectionHeader toptitle={"--My Cart--"} title={"Wanna Do Add More?"} />
       <div className="flex justify-between mt-8">
         <h4 className="text-2xl font-semibold">
@@ -22,13 +22,13 @@ const UserCart = () => {
         <button className="btn btn-neutral">Pay Now</button>
       </div>
       <div className="mt-5">
-        <div className="overflow-x-auto max-w-6xl">
+        <div className="overflow-x-auto">
           {isPending ? (
             "Loading your data please wait"
           ) : (
             <div>
               {cartItems ? (
-                <table className="table w-[1080px] xl:w-full">
+                <table className="table w-full">
                   <thead className="bg-gray-600 rounded-lg">
                     <tr>
                       <th className="text-xl text-white">NO. :</th>
