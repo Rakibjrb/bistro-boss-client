@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
-import useAxios from "../../../Hooks/useAxios";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const CartItems = ({ item, index, refetch }) => {
-  const axios = useAxios();
+  const axios = useAxiosSecure();
   const { _id, price, image, name, useremail } = item;
   const handleItemDelete = () => {
     Swal.fire({
