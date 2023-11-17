@@ -126,7 +126,7 @@ const Nav = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://i.ibb.co/5x441PC/user.png"
+                    src={user?.photoURL || "https://i.ibb.co/5x441PC/user.png"}
                   />
                 </div>
               </label>
@@ -146,7 +146,7 @@ const Nav = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://i.ibb.co/5x441PC/user.png"
+                    src={user?.photoURL || "https://i.ibb.co/5x441PC/user.png"}
                   />
                 </div>
               </label>

@@ -2,17 +2,31 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../../Hooks/useAxios";
 
 const ExtraLogin = () => {
+  const axios = useAxios();
   const location = useLocation();
   const navigate = useNavigate();
 
   const { googleSignIn } = useAuth();
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
+      .then((res) => {
+        const userInfo = {
+          name: res.user?.displayName,
+          email: res.user?.email,
+        };
+        axios
+          .post("/users", userInfo)
+          .then((res) => {
+            if (res.data)
+              location?.state?.from
+                ? navigate(location?.state?.from)
+                : navigate("/");
+          })
+          .catch((e) => console.log(e));
         toast.success("Google Sign In Success ...");
-        location?.state?.from ? navigate(location?.state?.from) : navigate("/");
       })
       .catch((e) => {
         console.log(e);

@@ -5,9 +5,11 @@ import "./loginSignUp.css";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { ImSpinner3 } from "react-icons/im";
+import useAxios from "../../Hooks/useAxios";
 
 const Signup = () => {
   const { loading, createNewUser, updateUserProifle } = useAuth();
+  const axios = useAxios();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -50,15 +52,27 @@ const Signup = () => {
       return;
     }
 
+    const userInfo = {
+      name,
+      email,
+    };
+
     createNewUser(email, password)
       .then(() => {
         toast.success("User Account Creation Successfull ...");
         form.reset();
         updateUserProifle(name)
           .then(() => {
-            location?.state?.from
-              ? navigate(location?.state?.from)
-              : navigate("/");
+            axios
+              .post("/users", userInfo)
+              .then((res) => {
+                console.log(res.data);
+                if (res.data)
+                  location?.state?.from
+                    ? navigate(location?.state?.from)
+                    : navigate("/");
+              })
+              .catch((e) => console.log(e));
           })
           .catch((e) => console.log(e));
       })
