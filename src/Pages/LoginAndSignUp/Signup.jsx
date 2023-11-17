@@ -55,6 +55,7 @@ const Signup = () => {
     const userInfo = {
       name,
       email,
+      role: "User",
     };
 
     createNewUser(email, password)

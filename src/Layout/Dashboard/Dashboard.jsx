@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const isAdmin = false;
+  const isAdmin = true;
 
   return (
     <div className="min-w-[768px] overflow-auto px-3 xl:px-0">
@@ -9,7 +9,7 @@ const Dashboard = () => {
         <div className="drawer drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
-            <div className="mt-0 ml-[180px]">
+            <div className="mt-0 ml-[200px]">
               <Outlet />
             </div>
             <label

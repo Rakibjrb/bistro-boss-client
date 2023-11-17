@@ -16,6 +16,7 @@ const ExtraLogin = () => {
         const userInfo = {
           name: res.user?.displayName,
           email: res.user?.email,
+          role: "User",
         };
         axios
           .post("/users", userInfo)
