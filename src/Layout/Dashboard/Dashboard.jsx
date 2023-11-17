@@ -1,13 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+  const isAdmin = false;
+
   return (
     <div className="min-w-[768px] overflow-auto px-3 xl:px-0">
       <div>
-        <div className="drawer lg:drawer-open">
+        <div className="drawer drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex flex-col-reverse lg:flex-col">
-            <div className="mt-0">
+          <div className="drawer-content flex flex-col">
+            <div className="mt-0 ml-[180px]">
               <Outlet />
             </div>
             <label
@@ -36,28 +38,54 @@ const Dashboard = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <ul className="space-y-5 py-6 px-8 min-h-full bg-gray-600 text-white fixed top-0 left-0">
               {/* Sidebar content here */}
-              <li>
-                <NavLink to="profile">Profile</NavLink>
-              </li>
-              <li>
-                <NavLink to="reservation">Reservation</NavLink>
-              </li>
-              <li>
-                <NavLink to="payment-history">Payment History</NavLink>
-              </li>
-              <li>
-                <NavLink to="cart">My Cart</NavLink>
-              </li>
-              <li>
-                <NavLink to="add-review">Add Review</NavLink>
-              </li>
-              <li>
-                <NavLink to="my-booking">My Booking</NavLink>
-              </li>
+              {isAdmin ? (
+                <>
+                  <li>
+                    <NavLink to="admin-home">Admin Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="add-items">Add Items</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="manage-items">Manage Items</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="manage-bookings">Manage Bookings</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="all-users">All Users</NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink to="profile">Profile</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="reservation">Reservation</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="payment-history">Payment History</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="cart">My Cart</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="add-review">Add Review</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="my-booking">My Booking</NavLink>
+                  </li>
+                </>
+              )}
+              <div className="h-1 bg-white my-5"></div>
               <li>
                 <NavLink to="/">Go Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/our-shop/salad">Shop</NavLink>
               </li>
             </ul>
           </div>

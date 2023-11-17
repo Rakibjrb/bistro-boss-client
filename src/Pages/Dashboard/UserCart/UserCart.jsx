@@ -12,13 +12,15 @@ const UserCart = () => {
   return (
     <div className="px-2">
       <SectionHeader toptitle={"--My Cart--"} title={"Wanna Do Add More?"} />
-      <div className="flex justify-between mt-8">
-        <h4 className="text-2xl font-semibold">
-          Total Cart Items : {cartItems.length || 0}
-        </h4>
-        <h4 className="text-2xl font-semibold">
-          Total Price : {totalPrice.toFixed(2) || 0} $
-        </h4>
+      <div className="flex justify-between mt-5 flex-col lg:flex-row">
+        <div className="flex justify-between mb-5 w-full lg:pr-20">
+          <h4 className="text-2xl font-semibold">
+            Total Cart Items : {cartItems.length || 0}
+          </h4>
+          <h4 className="text-2xl font-semibold">
+            Total Price : {totalPrice.toFixed(2) || 0} $
+          </h4>
+        </div>
         <button className="btn btn-neutral">Pay Now</button>
       </div>
       <div className="mt-5">
