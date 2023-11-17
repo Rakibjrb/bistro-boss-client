@@ -8,7 +8,7 @@ const AllUsers = () => {
 
   const {
     data: allUsers,
-    // refetch,
+    refetch,
     isPending,
   } = useQuery({
     queryKey: ["getallusers"],
@@ -47,7 +47,7 @@ const AllUsers = () => {
                         key={user._id}
                         user={user}
                         index={index}
-                        // refetch={refetch}
+                        refetch={refetch}
                       />
                     ))}
                   </tbody>

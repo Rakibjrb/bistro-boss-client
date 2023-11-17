@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
-const Users = ({ user, index }) => {
-  //   const axios = useAxiosSecure();
-  const { name, email, role } = user;
-  const handleItemDelete = () => {
+const Users = ({ user, index, refetch }) => {
+  const axios = useAxiosSecure();
+  const { _id, name, email, role } = user;
+  const handleUser = (value) => {
     Swal.fire({
       title: "Are you sure?",
       icon: "warning",
@@ -16,22 +16,36 @@ const Users = ({ user, index }) => {
       confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: "success",
-        });
-        toast.success("Clicked");
-        // axios
-        //   .delete(`/cart/${_id}?email=${useremail}`)
-        //   .then((res) => {
-        //     if (res?.data?.deletedCount) {
-        //       refetch();
-        //       toast.success("Item deleted from cart ...");
-        //     }
-        //   })
-        //   .catch((e) => {
-        //     console.log(e);
-        //     toast.error("Something went wrong !!! try again ...");
-        //   });
+        if (value === "delete") {
+          Swal.fire({
+            icon: "success",
+          });
+          axios
+            .delete(`/users/${_id}`)
+            .then((res) => {
+              res && refetch();
+              toast.success("User deleted ...");
+            })
+            .catch((e) => {
+              console.log(e);
+              toast.error("Something went wrong !!! try again ...");
+            });
+        }
+        if (value === "Admin") {
+          Swal.fire({
+            icon: "success",
+          });
+          axios
+            .patch(`/users/${_id}`, { role: "Admin" })
+            .then((res) => {
+              res && refetch();
+              toast.success("Role changed ...");
+            })
+            .catch((e) => {
+              console.log(e);
+              toast.error("Something went wrong !!! try again ...");
+            });
+        }
       }
     });
   };
@@ -48,20 +62,23 @@ const Users = ({ user, index }) => {
         <h3 className="text-xl">{email}</h3>
       </td>
       <td>
-        <h4
+        <button
+          onClick={() => handleUser("Admin")}
           className={`${
-            role === "Admin" ? "btn btn-sm btn-success" : "text-xl"
+            role === "Admin"
+              ? "btn btn-sm btn-success w-32"
+              : "btn btn-sm btn-warning w-32"
           }`}
         >
-          {role || "User"}
-        </h4>
+          {role === "Admin" ? "Admin" : "Make Admin"}
+        </button>
       </td>
       <th>
         <button
           className="btn btn-sm btn-error text-white"
-          onClick={handleItemDelete}
+          onClick={() => handleUser("delete")}
         >
-          {role === "Admin" ? "Change Role" : "Delete"}
+          Delete
         </button>
       </th>
     </tr>
@@ -71,6 +88,6 @@ const Users = ({ user, index }) => {
 Users.propTypes = {
   user: PropTypes.object,
   index: PropTypes.number,
-  //   refetch: PropTypes.func,
+  refetch: PropTypes.func,
 };
 export default Users;

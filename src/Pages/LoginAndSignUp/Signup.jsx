@@ -67,7 +67,6 @@ const Signup = () => {
             axios
               .post("/users", userInfo)
               .then((res) => {
-                console.log(res.data);
                 if (res.data)
                   location?.state?.from
                     ? navigate(location?.state?.from)
