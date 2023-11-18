@@ -1,7 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const [admin] = useAdmin();
+  const isAdmin = admin;
 
   return (
     <div className="min-w-[768px] overflow-auto px-3 xl:px-0">
