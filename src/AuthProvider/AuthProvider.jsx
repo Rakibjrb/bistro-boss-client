@@ -11,10 +11,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import useAxios from "../Hooks/useAxios";
-import {
-  removeTokenFromLocalStorage,
-  setTokenToLocalStorage,
-} from "../utilities/access-localstorage";
 
 export const AuthContext = createContext(null);
 
@@ -73,11 +69,11 @@ const AuthProvider = ({ children }) => {
         const userInfo = { email: currentUser.email };
         axios
           .post("/access-token", userInfo)
-          .then((res) => setTokenToLocalStorage(res.data?.token))
+          .then((res) => localStorage.setItem("access-token", res.data?.token))
           .catch((e) => console.log(e));
       } else {
         if (localStorage.getItem("access-token")) {
-          removeTokenFromLocalStorage();
+          localStorage.removeItem("access-token");
         }
       }
       setLoading(false);

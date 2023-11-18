@@ -17,9 +17,6 @@ const Users = ({ user, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         if (value === "delete") {
-          Swal.fire({
-            icon: "success",
-          });
           axios
             .delete(`/users/${_id}`)
             .then((res) => {
