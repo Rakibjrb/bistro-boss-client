@@ -59,6 +59,9 @@ const Dashboard = () => {
                   <li>
                     <NavLink to="all-users">All Users</NavLink>
                   </li>
+                  <li>
+                    <NavLink to="cart">My Cart</NavLink>
+                  </li>
                 </>
               ) : (
                 <>

@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import useAxios from "../../Hooks/useAxios";
 import toast from "react-hot-toast";
-import useCart from "../../Hooks/useCart";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ItemsCard = ({ menu }) => {
   const { user } = useAuth();
-  const axios = useAxios();
+  const axios = useAxiosSecure();
   const { _id, name, image, recipe, price } = menu;
   const navigate = useNavigate();
-  const [, refetch] = useCart();
+  const { refetch } = useQuery({
+    queryKey: ["getcartItems"],
+  });
 
   const handleAddToCart = () => {
     if (!user) {

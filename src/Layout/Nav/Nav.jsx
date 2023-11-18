@@ -1,16 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { HiShoppingCart } from "react-icons/hi";
 import "./nav.css";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
-import useCart from "../../Hooks/useCart";
 
 const Nav = () => {
   const [sticky, setSticky] = useState(false);
   const { user, userLogout } = useAuth();
   const navigate = useNavigate();
-  const [cartItems] = useCart();
 
   const handleLogOut = () => {
     userLogout().then(() => {
@@ -40,14 +37,6 @@ const Nav = () => {
         <NavLink to="/our-shop/salad" className="uppercase">
           Our Shop
         </NavLink>
-      </li>
-      <li>
-        <Link className="relative" to="/user-dashboard/cart">
-          <HiShoppingCart className="text-2xl" />
-          <h4 className="badge badge-secondary absolute lg:-top-4 lg:-right-7">
-            {cartItems?.length || 0}
-          </h4>
-        </Link>
       </li>
     </>
   );

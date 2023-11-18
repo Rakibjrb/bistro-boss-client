@@ -1,9 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import SectionHeader from "../../../Components/CommonHeader/SectionHeader";
-import useCart from "../../../Hooks/useCart";
 import CartItems from "./CartItems";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const UserCart = () => {
-  const [cartItems, refetch, isPending] = useCart();
+  const { user } = useAuth();
+  const axios = useAxiosSecure();
+  const {
+    data: cartItems = [],
+    refetch,
+    isPending,
+  } = useQuery({
+    queryKey: ["getcartItems", user?.email],
+    queryFn: async () => {
+      const res = await axios.get(`/cart?email=${user?.email}`);
+      return res.data;
+    },
+  });
   const totalPrice = cartItems?.reduce(
     (sum, currentvalue) => sum + currentvalue.price,
     0
