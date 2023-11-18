@@ -10,6 +10,11 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import useAxios from "../Hooks/useAxios";
+import {
+  removeTokenFromLocalStorage,
+  setTokenToLocalStorage,
+} from "../utilities/access-localstorage";
 
 export const AuthContext = createContext(null);
 
@@ -18,6 +23,7 @@ const googleAuthProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
+  const axios = useAxios();
 
   const googleSignIn = () => {
     setLoading(true);
@@ -63,6 +69,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        axios
+          .post("/access-token", userInfo)
+          .then((res) => setTokenToLocalStorage(res.data?.token))
+          .catch((e) => console.log(e));
+      } else {
+        if (localStorage.getItem("access-token")) {
+          removeTokenFromLocalStorage();
+        }
+      }
       setLoading(false);
     });
 
