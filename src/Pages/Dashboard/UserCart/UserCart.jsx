@@ -32,7 +32,7 @@ const UserCart = () => {
             Total Cart Items : {cartItems.length || 0}
           </h4>
           <h4 className="text-2xl font-semibold">
-            Total Price : {totalPrice.toFixed(2) || 0} $
+            Total Price : {parseFloat(totalPrice).toFixed(2) || 0} $
           </h4>
         </div>
         <button className="btn btn-neutral">Pay Now</button>

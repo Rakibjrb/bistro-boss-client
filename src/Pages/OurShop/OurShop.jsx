@@ -38,7 +38,7 @@ const OurShop = () => {
       <div className="max-w-7xl mx-auto mb-16 px-3 xl:px-0">
         <Tabs defaultIndex={defaultIndex}>
           <TabList>
-            <Tab>Offered</Tab>
+            <Tab>OFFERED</Tab>
             <Tab>SALAD</Tab>
             <Tab>PIZZA</Tab>
             <Tab>DESSERT</Tab>
