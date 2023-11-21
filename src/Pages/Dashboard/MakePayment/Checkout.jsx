@@ -13,7 +13,7 @@ const Checkout = () => {
   const elements = useElements();
   const [secrete, setSecrete] = useState(null);
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+  const totalPrice = cartItems?.reduce((total, item) => total + item.price, 0);
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -34,7 +34,6 @@ const Checkout = () => {
 
     if (error) {
       toast.error(error.message);
-      console.log("payment error", error);
     }
 
     if (paymentMethod) {
@@ -53,8 +52,30 @@ const Checkout = () => {
       if (paymentError) {
         toast.error("something went wrong !!! Payment eror");
       } else {
-        paymentIntent.status === "succeeded" &&
-          toast.success("Payment successfull ...");
+        const productIds = cartItems?.map((item) => item._id);
+        const itemIds = cartItems?.map((item) => item.itemId);
+
+        const orderInfo = {
+          name: user?.displayName,
+          price: totalPrice,
+          transectionId: paymentIntent.id,
+          email: user?.email,
+          date: new Date(),
+          itemIds,
+          productIds,
+          status: "Pending",
+        };
+
+        axios
+          .post("/payments", { orderInfo })
+          .then((res) => {
+            res.data &&
+              toast.success("Payment successfull. Go to payment history.....");
+          })
+          .catch((err) => {
+            console.log(err);
+            console.log("called error");
+          });
       }
     }
   };
