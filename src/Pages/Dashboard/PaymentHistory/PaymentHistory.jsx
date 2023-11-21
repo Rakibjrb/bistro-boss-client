@@ -2,14 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import SectionHeader from "../../../Components/CommonHeader/SectionHeader";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Payments from "./Payments";
+import useAuth from "../../../Hooks/useAuth";
 
 const PaymentHistory = () => {
   const axios = useAxiosSecure();
+  const { user } = useAuth();
 
   const { data: paymentHistory, isPending } = useQuery({
     queryKey: ["paymentHistory"],
     queryFn: async () => {
-      const res = await axios.get("/payments");
+      const res = await axios.get(`/payments/${user?.email}`);
       return res.data;
     },
   });

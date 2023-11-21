@@ -16,6 +16,7 @@ import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import MakePayment from "../Pages/Dashboard/MakePayment/MakePayment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import ManageBookings from "../Pages/Dashboard/ManageBookings/ManageBookings";
 
 const routes = createBrowserRouter([
   {
@@ -103,6 +104,14 @@ const routes = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-bookings",
+        element: (
+          <AdminRoute>
+            <ManageBookings />
           </AdminRoute>
         ),
       },

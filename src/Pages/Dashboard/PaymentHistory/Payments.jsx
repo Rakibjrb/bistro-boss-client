@@ -12,7 +12,7 @@ const Payments = ({ payment, index }) => {
         <h3 className="text-xl">{email}</h3>
       </td>
       <td>
-        <h3 className="text-xl">{price}</h3>
+        <h3 className="text-xl">{parseInt(price)}$</h3>
       </td>
       <td>
         <h4 className="text-xl">{date}</h4>
