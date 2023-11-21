@@ -1,23 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import SectionHeader from "../../../Components/CommonHeader/SectionHeader";
 import CartItems from "./CartItems";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
+import useCart from "../../../Hooks/useCart";
 
 const UserCart = () => {
-  const { user } = useAuth();
-  const axios = useAxiosSecure();
-  const {
-    data: cartItems = [],
-    refetch,
-    isPending,
-  } = useQuery({
-    queryKey: ["getcartItems", user?.email],
-    queryFn: async () => {
-      const res = await axios.get(`/cart?email=${user?.email}`);
-      return res.data;
-    },
-  });
+  const [cartItems, refetch, isPending] = useCart();
   const totalPrice = cartItems?.reduce(
     (sum, currentvalue) => sum + currentvalue.price,
     0
@@ -35,7 +22,15 @@ const UserCart = () => {
             Total Price : {parseFloat(totalPrice).toFixed(2) || 0} $
           </h4>
         </div>
-        <button className="btn btn-neutral">Pay Now</button>
+        {parseFloat(totalPrice).toFixed(2) > 0 ? (
+          <Link to="/user-dashboard/make-payment" className="btn btn-neutral">
+            Pay Now
+          </Link>
+        ) : (
+          <button disabled className="btn btn-neutral">
+            Pay Now
+          </button>
+        )}
       </div>
       <div className="mt-5">
         <div className="overflow-x-auto">

@@ -45,46 +45,60 @@ const Dashboard = () => {
               {isAdmin ? (
                 <>
                   <li>
-                    <NavLink to="profile">Profile</NavLink>
+                    <NavLink to="/user-dashboard/profile">Profile</NavLink>
                   </li>
                   <li>
-                    <NavLink to="admin-home">Admin Home</NavLink>
+                    <NavLink to="/user-dashboard/admin-home">
+                      Admin Home
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="add-items">Add Items</NavLink>
+                    <NavLink to="/user-dashboard/add-items">Add Items</NavLink>
                   </li>
                   <li>
-                    <NavLink to="manage-items">Manage Items</NavLink>
+                    <NavLink to="/user-dashboard/manage-items">
+                      Manage Items
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="manage-bookings">Manage Bookings</NavLink>
+                    <NavLink to="/user-dashboard/manage-bookings">
+                      Manage Bookings
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="all-users">All Users</NavLink>
+                    <NavLink to="/user-dashboard/all-users">All Users</NavLink>
                   </li>
                   <li>
-                    <NavLink to="cart">My Cart</NavLink>
+                    <NavLink to="/user-dashboard/cart">My Cart</NavLink>
                   </li>
                 </>
               ) : (
                 <>
                   <li>
-                    <NavLink to="profile">Profile</NavLink>
+                    <NavLink to="/user-dashboard/profile">Profile</NavLink>
                   </li>
                   <li>
-                    <NavLink to="reservation">Reservation</NavLink>
+                    <NavLink to="/user-dashboard/make-payment">
+                      Reservation
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="payment-history">Payment History</NavLink>
+                    <NavLink to="/user-dashboard/payment-histroy">
+                      Payment History
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="cart">My Cart</NavLink>
+                    <NavLink to="/user-dashboard/cart">My Cart</NavLink>
                   </li>
                   <li>
-                    <NavLink to="add-review">Add Review</NavLink>
+                    <NavLink to="/user-dashboard/add-review">
+                      Add Review
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="my-booking">My Booking</NavLink>
+                    <NavLink to="/user-dashboard/my-booking">
+                      My Booking
+                    </NavLink>
                   </li>
                 </>
               )}
